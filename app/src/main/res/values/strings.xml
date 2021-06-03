@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Dev-intensive</string>
+    <string name="edit_text_hint">Введите сообщение</string>
+    <string name="correct_answer">Отлично - это правильный ответ!</string>
+    <string name="wrong_answer">Это неправильный ответ!</string>
+</resources>
