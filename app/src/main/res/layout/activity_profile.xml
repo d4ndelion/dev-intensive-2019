@@ -12,12 +12,18 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ru.skillbranch.devintensive.ui.custom.AspectRatioImageView
-            android:layout_width="wrap_content"
+        <!--<ru.skillbranch.devintensive.ui.custom.AspectRatioImageView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/flowers_profile_background"
             android:scaleType="centerCrop"
-            app:ratio="2"/>
+            app:ratio="1.78"/> not working for some reason -->
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/gray"
+            android:scaleType="centerCrop"/>
+            <!--android:src="@drawable/profile_bg" too big bitmap-->
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -38,8 +44,9 @@
                 android:id="@+id/profile_avatar"
                 android:layout_width="@dimen/avatar_round_size"
                 android:layout_height="@dimen/avatar_round_size"
-                android:src="@drawable/default_avatar"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_baseline_person_24"/>
+
 
             <ImageButton
                 android:layout_width="@dimen/btn_round_size_40"

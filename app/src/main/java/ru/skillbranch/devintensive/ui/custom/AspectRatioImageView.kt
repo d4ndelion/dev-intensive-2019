@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import ru.skillbranch.devintensive.R
 
-class AspectRatioImageView @JvmOverloads constructor(
+class AspectRatioImageView (
     context: Context,
     attributes: AttributeSet? = null,
     defineStyleAttribute: Int = 0
