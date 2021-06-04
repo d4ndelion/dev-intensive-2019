@@ -3,4 +3,6 @@
     <string name="edit_text_hint">Введите сообщение</string>
     <string name="correct_answer">Отлично - это правильный ответ!</string>
     <string name="wrong_answer">Это неправильный ответ!</string>
+    <string name="profile_rating">Рейтинг</string>
+    <string name="profile_respect">Уважение</string>
 </resources>
