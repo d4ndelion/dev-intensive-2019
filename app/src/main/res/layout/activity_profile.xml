@@ -32,6 +32,7 @@
             android:layout_marginBottom="@dimen/spacing_normal_16">
 
             <ImageButton
+                android:id="@+id/darkmode"
                 android:layout_width="@dimen/btn_round_size_40"
                 android:layout_height="@dimen/btn_round_size_40"
                 android:background="@drawable/btn_round_bg"
@@ -49,6 +50,7 @@
 
 
             <ImageButton
+                android:id="@+id/button_edit"
                 android:layout_width="@dimen/btn_round_size_40"
                 android:layout_height="@dimen/btn_round_size_40"
                 android:background="@drawable/btn_round_bg"
@@ -83,6 +85,7 @@
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/respect_rating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -96,6 +99,7 @@
                 android:layout_marginTop="@dimen/spacing_normal_16"
                 android:layout_marginBottom="@dimen/spacing_normal_16">
                 <TextView
+                    android:id="@+id/profile_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
@@ -125,6 +129,7 @@
                 android:layout_marginTop="@dimen/spacing_normal_16"
                 android:layout_marginBottom="@dimen/spacing_normal_16">
                 <TextView
+                    android:id="@+id/profile_respect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
@@ -166,7 +171,10 @@
                 android:layout_height="wrap_content"
                 android:hint="Имя"
                 android:background="@color/white"
-                android:paddingTop="4dp"/>
+                android:paddingTop="4dp"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -184,7 +192,10 @@
                 android:layout_height="wrap_content"
                 android:hint="Фамилия"
                 android:background="@color/white"
-                android:paddingTop="4dp"/>
+                android:paddingTop="4dp"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
     </RelativeLayout>
 
@@ -208,7 +219,6 @@
             android:layout_marginTop="@dimen/spacing_small_8"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/about_descr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_normal_16"
@@ -220,7 +230,10 @@
                 android:layout_height="wrap_content"
                 android:hint="О себе"
                 android:background="@color/white"
-                android:paddingTop="4dp"/>
+                android:paddingTop="4dp"
+                android:imeOptions="actionNext"
+                android:inputType="textMultiLine"
+                android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
@@ -258,10 +271,14 @@
                 android:layout_height="wrap_content"
                 android:hint="Репозиторий"
                 android:background="@color/white"
-                android:paddingTop="4dp"/>
+                android:paddingTop="4dp"
+                android:imeOptions="actionDone"
+                android:inputType="textUri"
+                android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
+            android:id="@+id/button_eye"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/eye_show"
