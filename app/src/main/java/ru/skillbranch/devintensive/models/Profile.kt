@@ -1,7 +1,6 @@
 package ru.skillbranch.devintensive.models
 
 data class Profile(
-    val rank: String = "Rookie",
     val firstName: String = "John",
     val secondName: String = "Doe",
     val description: String,
@@ -9,11 +8,12 @@ data class Profile(
     val rating: Int = 0,
     val respect: Int = 0
 ){
-    private val nickname = "$firstName + $secondName"
+    private val rank: String = "Rookie"
+    private val nickname = "John Doe"
     fun toMap(): Map<String, Any> = mapOf(
-        "rank" to rank,
         "firstName" to firstName,
         "secondName" to secondName,
+        "rank" to rank,
         "description" to description,
         "repository" to repository,
         "rating" to rating,
