@@ -26,3 +26,15 @@ fun Date.add(value: Int, units: String): Date{
     this.time = time
     return this
 }
+
+fun Date?.shortFormat(): String? {
+    val pattern = if (this.isSameDay(Date()) == true) "HH:mm" else "dd.MM.yy"
+    val dateFormat = SimpleDateFormat(pattern, Locale("ru"))
+    return dateFormat.format(this)
+}
+
+fun Date?.isSameDay(date: Date?): Boolean? {
+    val day1 = this?.time?.div(DAY)
+    val day2 = date?.time?.div(DAY)
+    return day1 == day2
+}

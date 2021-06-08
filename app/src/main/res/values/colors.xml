@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="pink_primary">#DF71F3</color>
+    <color name="pink_primary">#E66569</color>
     <color name="pink_primary_light">#BA9FE1</color>
     <color name="purple_dark">#231A39</color>
     <color name="teal_200">#FF03DAC5</color>
@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#CDD8D5</color>
+    <color name="color_accent">#F7DF10</color>
+    <color name="green">#31C111</color>
 </resources>
