@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="ru.skillbranch.devintensive.ui.profile.ProfileVM" />
+    </data>
+<LinearLayout
+    android:id="@+id/father"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.profile.ProfileActivity"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--<ru.skillbranch.devintensive.ui.custom.AspectRatioImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:ratio="1.78"/> not working for some reason -->
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/gray"
+            android:scaleType="centerCrop"/>
+            <!--android:src="@drawable/profile_bg" too big bitmap-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/spacing_normal_16">
+
+            <ImageButton
+                android:id="@+id/darkmode"
+                android:layout_width="@dimen/btn_round_size_40"
+                android:layout_height="@dimen/btn_round_size_40"
+                android:background="@drawable/btn_round_bg"
+                android:src="@drawable/ic_baseline_wb_sunny_24"
+                android:layout_toStartOf="@+id/profile_avatar"
+                android:layout_marginTop="@dimen/spacing_huge_32"
+                android:layout_marginEnd="@dimen/spacing_huge_32"/>
+
+            <ImageView
+                android:id="@+id/profile_avatar"
+                android:layout_width="@dimen/avatar_round_size"
+                android:layout_height="@dimen/avatar_round_size"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_baseline_person_24"/>
+
+
+            <ImageButton
+                android:id="@+id/button_edit"
+                android:layout_width="@dimen/btn_round_size_40"
+                android:layout_height="@dimen/btn_round_size_40"
+                android:background="@drawable/btn_round_bg"
+                android:src="@drawable/ic_baseline_edit_24"
+                android:layout_toEndOf="@+id/profile_avatar"
+                android:layout_marginTop="@dimen/spacing_huge_32"
+                android:layout_marginStart="@dimen/spacing_huge_32"/>
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="John Doe"
+                android:layout_below= "@+id/profile_avatar"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_large_24"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="@dimen/font_medium_16"/>
+
+            <TextView
+                android:id="@+id/profile_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_name"
+                android:layout_centerHorizontal="true"
+                android:text="Head Police Officer"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_medium_16"/>
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/respect_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/purple_dark">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/spacing_normal_16"
+                android:layout_marginBottom="@dimen/spacing_normal_16">
+                <TextView
+                    android:id="@+id/profile_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="@dimen/font_20"
+                    android:textColor="@color/gray"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_rating"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/font_medium_16"/>
+            </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/spacing_normal_16"
+            android:layout_marginBottom="@dimen/spacing_normal_16"
+            android:background="@color/gray"/>
+        
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/spacing_normal_16"
+                android:layout_marginBottom="@dimen/spacing_normal_16">
+                <TextView
+                    android:id="@+id/profile_respect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="@dimen/font_20"
+                    android:textColor="@color/gray"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_respect"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/font_medium_16"/>
+            </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/avatar_pic"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="@dimen/spacing_normal_16"
+                android:layout_marginTop="@dimen/spacing_normal_16"
+                tools:srcCompat="@tools:sample/avatars" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/avatar_pic"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginTop="@dimen/spacing_small_8"
+            android:layout_marginEnd="@dimen/spacing_normal_16">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Имя"
+                android:background="@color/white"
+                android:paddingTop="4dp"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:focusable="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/second_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/avatar_pic"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginTop="@dimen/spacing_small_8"
+            android:layout_marginEnd="@dimen/spacing_normal_16"
+            android:layout_below="@id/name">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_second_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Фамилия"
+                android:background="@color/white"
+                android:paddingTop="4dp"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:focusable="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/spacing_normal_16"
+        android:layout_marginBottom="@dimen/spacing_normal_16"
+        android:background="@color/gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="4dp">
+        <ImageView
+            android:layout_width="@dimen/btn_round_size_40"
+            android:layout_height="@dimen/btn_round_size_40"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:src="@drawable/about_descr"
+            android:layout_marginTop="@dimen/spacing_small_8"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginTop="@dimen/spacing_small_8"
+            android:layout_marginEnd="@dimen/spacing_normal_16">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_about_descr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="О себе"
+                android:background="@color/white"
+                android:paddingTop="4dp"
+                android:imeOptions="actionNext"
+                android:inputType="textMultiLine"
+                android:focusable="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/spacing_normal_16"
+        android:layout_marginBottom="@dimen/spacing_normal_16"
+        android:background="@color/gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="4dp">
+        <ImageView
+            android:layout_width="@dimen/btn_round_size_40"
+            android:layout_height="@dimen/btn_round_size_40"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:src="@drawable/repo_image"
+            android:layout_marginTop="@dimen/spacing_small_8"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/about_repos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginTop="@dimen/spacing_small_8"
+            android:layout_marginEnd="@dimen/spacing_normal_16">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_about_repos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Репозиторий"
+                android:background="@color/white"
+                android:paddingTop="4dp"
+                android:imeOptions="actionDone"
+                android:inputType="textUri"
+                android:focusable="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/button_eye"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/eye_show"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/spacing_normal_16"
+        android:layout_marginBottom="@dimen/spacing_normal_16"
+        android:background="@color/gray"/>
+
+</LinearLayout>
+</layout>
