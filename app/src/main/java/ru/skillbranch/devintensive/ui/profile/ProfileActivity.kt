@@ -48,9 +48,21 @@ class ProfileActivity : AppCompatActivity() {
         binding.darkmode.setOnClickListener {
             isDarkMode = !isDarkMode
             if (isDarkMode) {
-                TODO("implement later")
+                Log.d("asdasd", "$isDarkMode")
+                binding.respectRating.setBackgroundColor(Color.BLACK)
+                binding.father.setBackgroundColor(Color.rgb(188, 143,157))
+                binding.editName.setBackgroundColor(Color.rgb(188, 143,157))
+                binding.editSecondName.setBackgroundColor(Color.rgb(188, 143,157))
+                binding.editAboutDescr.setBackgroundColor(Color.rgb(188, 143,157))
+                binding.editAboutRepos.setBackgroundColor(Color.rgb(188, 143,157))
             } else {
-                TODO("implement later")
+                Log.d("asdasd", "$isDarkMode")
+                binding.respectRating.setBackgroundColor(Color.rgb(35, 26,57))
+                binding.father.setBackgroundColor(Color.WHITE)
+                binding.editName.setBackgroundColor(Color.WHITE)
+                binding.editSecondName.setBackgroundColor(Color.WHITE)
+                binding.editAboutDescr.setBackgroundColor(Color.WHITE)
+                binding.editAboutRepos.setBackgroundColor(Color.WHITE)
             }
         }
     }
@@ -103,7 +115,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun initViewModel(){
         viewModel = ViewModelProviders.of(this).get(ProfileVM::class.java)
-        viewModel.getProfileData().observe(this, Observer { updateUI(it) })
+        viewModel.getProfileData().observe(this, { updateUI(it) })
     }
 
     private fun updateUI(profile: Profile?) {

@@ -8,6 +8,7 @@
             type="ru.skillbranch.devintensive.ui.profile.ProfileVM" />
     </data>
 <LinearLayout
+    android:id="@+id/father"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
