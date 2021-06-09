@@ -6,19 +6,36 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import ru.skillbranch.devintensive.R
 
-class ChatAdapter : RecyclerView.Adapter<ChatAdapter.SingleViewHolder>() {
-    var items : List<ChatItem> = listOf()
+class ChatAdapter(private var items : LiveData<List<ChatItem>>) : RecyclerView.Adapter<ChatAdapter.SingleViewHolder>() {
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ChatAdapter.SingleViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val view = inflater.inflate(R.layout.chat_item, parent, false)
+        Log.d("asdasd", "view created")
+        return SingleViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ChatAdapter.SingleViewHolder, position: Int) {
+        Log.d("asdasd", "view binded on pos $position")
+        items.value?.get(position)?.let { holder.bind(it) }
+    }
+
+    override fun getItemCount(): Int = items.value?.size ?: 0
 
     inner class SingleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val avatar: ImageView = view.findViewById<ImageView>(R.id.image_avatar)
-        val title: TextView = view.findViewById<TextView>(R.id.text_title)
-        val indicator: View = view.findViewById(R.id.online_indicator)
-        val date: TextView = view.findViewById(R.id.time_message)
-        val msgCount: TextView = view.findViewById(R.id.unread_count)
-        val titleSingle: TextView = view.findViewById(R.id.text_message_item)
+        val avatar: ImageView = view.findViewById(R.id.image_avatar)
+        val title: TextView = view.findViewById(R.id.text_title)
+        private val indicator: View = view.findViewById(R.id.online_indicator)
+        private val date: TextView = view.findViewById(R.id.time_message)
+        private val msgCount: TextView = view.findViewById(R.id.unread_count)
+        private val messageBody: TextView = view.findViewById(R.id.text_message_item)
 
 
         fun bind(item: ChatItem) {
@@ -33,30 +50,8 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.SingleViewHolder>() {
                 text = item.messageCount.toString()
             }
 
-            title.text = item.shortDescription
-            titleSingle.text = item.title
+            title.text = item.title
+            messageBody.text = item.shortDescription
         }
-    }
-
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ChatAdapter.SingleViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.chat_item, parent, false)
-        Log.d("MainActivityChatAdapter", "view created")
-        return SingleViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: ChatAdapter.SingleViewHolder, position: Int) {
-        Log.d("MainActivityChatAdapter", "view binded on pos $position")
-        holder.bind(items[position])
-    }
-
-    override fun getItemCount(): Int = items.size
-
-    fun updateData(data: List<ChatItem>) {
-        items = data
-        notifyDataSetChanged()
     }
 }
