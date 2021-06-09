@@ -6,17 +6,32 @@ import androidx.lifecycle.ViewModel
 import ru.skillbranch.devintensive.extensions.mutableLiveData
 
 class MainViewModel: ViewModel() {
+    private val chatRepository = ChatRepository
+    private var chats = mutableLiveData(loadChats())
+
     fun getChatData() : LiveData<List<ChatItem>> {
-        return mutableLiveData(loadChats())
+        return chats
     }
 
     private fun loadChats(): List<ChatItem> {
         val chats = chatRepository.getChats()
-        Log.d("asdasd", "${chats.size}")
         return chats.map {
             it.toChatItem()
+        }.sortedBy {
+            it.id.toInt()
         }
     }
 
-    private val chatRepository = ChatRepository
+    fun addItems() {
+        val newItems = ChatRepository.getChats().map{ it.toChatItem() }
+        val copy = chats.value!!.toMutableList()
+        copy.addAll(newItems)
+        chats.value = copy.sortedBy {
+            it.id.toInt()
+        }
+    }
+
+    fun addToArchive(id: String) {
+
+    }
 }

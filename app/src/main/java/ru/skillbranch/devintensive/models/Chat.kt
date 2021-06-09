@@ -7,7 +7,7 @@ import java.util.*
 class Chat(
     val id: String,
     val title: String,
-    val members: MutableList<User> = mutableListOf(),
+    private val members: MutableList<User> = mutableListOf(),
     val messages: MutableList<BaseMessage> = mutableListOf(),
     var isArchived: Boolean = false
 ) {
@@ -16,17 +16,30 @@ class Chat(
     private fun unreadMessageCount() = 0
     private fun isSingle() = members.size == 1
     fun toChatItem(): ChatItem {
+        return if (isSingle()) {
             val user = members.first()
-            return ChatItem(
+            ChatItem(
                 id,
                 user.avatar,
                 "??",
-                "${user.firstName?:""} ${user.lastName?:""}",
+                "${user.firstName ?: ""} ${user.lastName ?: ""}",
                 lastMessageShort(),
                 unreadMessageCount(),
                 lastMessageDate()?.shortFormat(),
                 user.isOnline
             )
+        } else {
+            ChatItem(
+                id,
+                null,
+                "??",
+                title,
+                lastMessageShort(),
+                unreadMessageCount(),
+                lastMessageDate()?.shortFormat(),
+                false
+            )
 
+        }
     }
 }
