@@ -21,5 +21,6 @@
     <dimen name="avatar_item_size">40dp</dimen>
     <dimen name="font_small_12">12sp</dimen>
     <dimen name="online_circle_size">8dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
 
 </resources>

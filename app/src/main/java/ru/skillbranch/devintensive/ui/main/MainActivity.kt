@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     private fun setGroupClick() {
         val buttonSetGroup: FloatingActionButton = findViewById(R.id.set_group)
         buttonSetGroup.setOnClickListener {
-            viewModel.addItems()
+
         }
     }
 

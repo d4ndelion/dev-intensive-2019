@@ -1,6 +1,6 @@
 package ru.skillbranch.devintensive.ui.main
 
-import android.util.Log
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import ru.skillbranch.devintensive.extensions.mutableLiveData
@@ -31,7 +31,15 @@ class MainViewModel: ViewModel() {
         }
     }
 
-    fun addToArchive(id: String) {
+    fun addToArchive(chatId: String) {
+        val chat = ChatRepository.find(chatId)
+        chat ?: return
+        chatRepository.update(chat.copy(isArchived = true))
+    }
 
+    fun removeFromArchive(chatId: String) {
+        val chat = ChatRepository.find(chatId)
+        chat ?: return
+        chatRepository.update(chat.copy(isArchived = false))
     }
 }

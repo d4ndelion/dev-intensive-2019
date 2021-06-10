@@ -4,7 +4,7 @@ import ru.skillbranch.devintensive.extensions.shortFormat
 import ru.skillbranch.devintensive.ui.main.ChatItem
 import java.util.*
 
-class Chat(
+data class Chat(
     val id: String,
     val title: String,
     private val members: MutableList<User> = mutableListOf(),
