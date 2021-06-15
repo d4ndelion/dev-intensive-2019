@@ -1,5 +1,6 @@
 package ru.skillbranch.devintensive.models
 
+import ru.skillbranch.devintensive.ui.group.UserItem
 import ru.skillbranch.devintensive.utils.parseFullName
 import java.util.*
 
@@ -22,8 +23,21 @@ data class User(
 
     constructor(id: String) : this(id, "John", "Doe $id")
 
-    init{
-        println("It's alive!!!")
+    fun toUserItem(): UserItem {
+        val lastActivity = when{
+            lastVisit == null -> "Не заходил"
+            isOnline -> "online"
+            else -> "последний раз был $lastVisit"
+        }
+        return UserItem(
+            id,
+            "${firstName.orEmpty()} ${lastName.orEmpty()}",
+            "??",
+            avatar,
+            lastActivity,
+            false,
+            isOnline
+        )
     }
 
     fun printUser(){

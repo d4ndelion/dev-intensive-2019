@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/spacing_normal_16"
+    android:background="@color/white">
+
+
+        <ru.skillbranch.devintensive.ui.custom.AvatarImageViewMask
+            android:id="@+id/image_avatar"
+            android:layout_width="@dimen/avatar_item_size"
+            android:layout_height="@dimen/avatar_item_size"
+            android:src="@drawable/makakich"
+            app:aiv_borderColor="@color/gray"
+            app:aiv_borderWidth="1dp"
+            app:aiv_initials="JS"/>
+
+        <View
+            android:id="@+id/online_indicator"
+            android:layout_width="@dimen/online_circle_size"
+            android:layout_height="@dimen/online_circle_size"
+            android:background="@drawable/bg_indicator"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/text_title"/>
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/image_avatar"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginEnd="@dimen/spacing_huge_32"
+            android:text="Chat Title"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="@dimen/font_medium_16"
+            android:textColor="@color/pink_primary"/>
+
+        <TextView
+            android:id="@+id/text_message_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_title"
+            android:layout_toEndOf="@+id/image_avatar"
+            android:layout_marginStart="@dimen/spacing_normal_16"
+            android:layout_marginEnd="@dimen/spacing_huge_32"
+            android:text="Text message..."
+            android:fontFamily="sans-serif-light"
+            android:textSize="@dimen/font_small_12"
+            android:textColor="@color/black"/>
+
+
+        <TextView
+            android:id="@+id/time_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:text="00:00"
+            android:textSize="@dimen/spacing_small_8"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-light"/>
+
+        <TextView
+            android:id="@+id/unread_count"
+            android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:minWidth="12dp"
+            android:layout_below="@+id/time_message"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/bg_counter"
+            android:fontFamily="sans-serif-light"
+            android:text="10111"
+            android:paddingLeft="@dimen/spacing_tiny_4"
+            android:paddingRight="@dimen/spacing_tiny_4"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font_small_8"
+            android:gravity="center"/>
+</RelativeLayout>

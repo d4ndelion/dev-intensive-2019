@@ -14,4 +14,13 @@
     <dimen name="button_medium_16">16dp</dimen>
     <dimen name="button_small_8">8dp</dimen>
 
+    <dimen name="btn_round_size_40">40dp</dimen>
+    <dimen name="avatar_round_size">112dp</dimen>
+    <dimen name="font_20">20sp</dimen>
+    <dimen name="item_height">72dp</dimen>
+    <dimen name="avatar_item_size">40dp</dimen>
+    <dimen name="font_small_12">12sp</dimen>
+    <dimen name="online_circle_size">8dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+
 </resources>
