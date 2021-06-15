@@ -47,10 +47,12 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@MainActivity)
             addItemDecoration(divider)
         }
-        val touchCallback = chatAdapter?.let { ChatItemTouchHelperCallback(it){
-            viewModel.addToArchive(it.id)
-            Snackbar.make(recyclerView, "Are you sure?", Snackbar.LENGTH_LONG).show()
-        } }
+        val touchCallback = chatAdapter?.let { it ->
+            ChatItemTouchHelperCallback(it) {
+                viewModel.addToArchive(it.id)
+                Snackbar.make(recyclerView, "Are you sure?", Snackbar.LENGTH_LONG).show()
+            }
+        }
         val touchHelper = touchCallback?.let { ItemTouchHelper(it) }
         touchHelper?.attachToRecyclerView(recyclerView)
     }

@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.extensions.LayoutContainer
 import ru.skillbranch.devintensive.R
 
-class UserAdapter(val listener: (UserItem) -> Unit) :
+class UserAdapter(private val listener: (UserItem) -> Unit) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     private var items: List<UserItem> = listOf()
@@ -50,7 +50,6 @@ class UserAdapter(val listener: (UserItem) -> Unit) :
         private val lastActivity: TextView = convertView.findViewById(R.id.tv_last_activity)
         private val selected: ImageView = convertView.findViewById(R.id.iv_selected)
 
-
         override val containerView: View?
             get() = itemView
 
@@ -59,10 +58,10 @@ class UserAdapter(val listener: (UserItem) -> Unit) :
                 .load(user.avatar)
                 .into(avatar)
 
-            indicator.visibility = if (user.isOnline) View.INVISIBLE else View.GONE
+            indicator.visibility = if (user.isOnline) View.VISIBLE else View.GONE
             userName.text = user.fullName
             lastActivity.text = user.lastActivity
-            selected.visibility = if(user.isSelected) View.INVISIBLE else View.GONE
+            selected.visibility = if(user.isSelected) View.VISIBLE else View.GONE
             itemView.setOnClickListener {
                 listener.invoke(user)
             }

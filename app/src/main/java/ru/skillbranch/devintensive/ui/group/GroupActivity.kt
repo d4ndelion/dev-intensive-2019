@@ -1,5 +1,6 @@
 package ru.skillbranch.devintensive.ui.group
 
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -51,7 +52,15 @@ class GroupActivity : AppCompatActivity() {
     private fun initViewModel() {
         viewModel = ViewModelProviders.of(this).get(GroupViewModel::class.java)
         viewModel.getUserData().observe(this, { usersAdapter.updateData(it) })
-        viewModel.getSelectedData().observe(this, { /*updateChip(it)*/ })
+        viewModel.getSelectedData().observe(this, {
+            updateChip(it)
+            toggleFab(it.size>1)
+        })
+    }
+
+    private fun toggleFab(isShow: Boolean) {
+        if (isShow) fab.show()
+        else fab.hide()
     }
 
     private fun initViews() {
@@ -66,12 +75,13 @@ class GroupActivity : AppCompatActivity() {
         fab.setOnClickListener {
             viewModel.handleCreateGroup()
             finish()
-            overridePendingTransition(R.anim.idle, R.anim.bottom_down)
+            overridePendingTransition(R.anim.idle, R.anim.bottom_up)
         }
     }
 
-/*    private fun addChipToGroup(user: UserItem) {
+    private fun addChipToGroup(user: UserItem) {
         val chip = Chip(this).apply {
+            chipIcon = resources.getDrawable(R.drawable.makakich)
             text = user.fullName
             isCloseIconVisible = true
             tag = user.id
@@ -79,10 +89,9 @@ class GroupActivity : AppCompatActivity() {
         }
         chip.setOnCloseIconClickListener {
             viewModel.handleRemoveChip(it.tag.toString())
-            chip_group.addView(chip)
         }
-    }*/
-
+        chip_group.addView(chip)
+    }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return if (item?.itemId == android.R.id.home){
             finish()
@@ -98,10 +107,13 @@ class GroupActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-/*    private fun updateChip(listUsers: List<UserItem>) {
+    private fun updateChip(listUsers: List<UserItem>) {
         chip_group.visibility = if(listUsers.isEmpty()) View.GONE else View.VISIBLE
-        val users = listUsers.associateBy { user -> user.id }
+
+        val users = listUsers
+            .associateBy { user -> user.id }
             .toMutableMap()
+
         val views = chip_group.children.associateBy { view -> view.tag }
 
         for ((k, v) in views) {
@@ -112,5 +124,5 @@ class GroupActivity : AppCompatActivity() {
         users.forEach { (_, v) ->
             addChipToGroup(v)
         }
-    }*/
+    }
 }

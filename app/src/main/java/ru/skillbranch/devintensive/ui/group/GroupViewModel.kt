@@ -1,5 +1,6 @@
 package ru.skillbranch.devintensive.ui.group
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Transformations
@@ -41,6 +42,7 @@ class GroupViewModel : ViewModel() {
     }
 
     private fun loadUsers(): List<UserItem> = groupRepository.loadUsers().map { it.toUserItem() }
+
     fun handleRemoveChip(userId: String) {
         userItems.value = userItems.value!!.map {
             if (it.id == userId) it.copy(isSelected = false)
