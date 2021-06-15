@@ -12,7 +12,11 @@ data class Chat(
     var isArchived: Boolean = false
 ) {
     private fun lastMessageDate() = Date() // TODO implement these methods
-    private fun lastMessageShort() = "Сообщений нет"
+
+    private fun lastMessageShort(): Pair<String, String> {
+        return "Сообщений нет" to "@John_Doe"
+    }
+
     private fun unreadMessageCount() = 0
     private fun isSingle() = members.size == 1
     fun toChatItem(): ChatItem {
@@ -23,7 +27,7 @@ data class Chat(
                 user.avatar,
                 "??",
                 "${user.firstName ?: ""} ${user.lastName ?: ""}",
-                lastMessageShort(),
+                lastMessageShort().first,
                 unreadMessageCount(),
                 lastMessageDate()?.shortFormat(),
                 user.isOnline
@@ -34,12 +38,20 @@ data class Chat(
                 null,
                 "??",
                 title,
-                lastMessageShort(),
+                lastMessageShort().first,
                 unreadMessageCount(),
                 lastMessageDate()?.shortFormat(),
-                false
+                false,
+                ChatType.GROUP,
+                lastMessageShort().second
             )
 
         }
     }
+}
+
+enum class ChatType {
+    SINGLE,
+    GROUP,
+    ARCHIVE
 }

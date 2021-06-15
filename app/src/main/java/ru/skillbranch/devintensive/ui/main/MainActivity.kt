@@ -1,5 +1,6 @@
 package ru.skillbranch.devintensive.ui.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import ru.skillbranch.devintensive.R
 import ru.skillbranch.devintensive.databinding.ActivityMainBinding
+import ru.skillbranch.devintensive.ui.group.GroupActivity
 import kotlin.reflect.typeOf
 
 class MainActivity : AppCompatActivity() {
@@ -56,7 +58,8 @@ class MainActivity : AppCompatActivity() {
     private fun setGroupClick() {
         val buttonSetGroup: FloatingActionButton = findViewById(R.id.set_group)
         buttonSetGroup.setOnClickListener {
-
+            val intent = Intent(this, GroupActivity::class.java)
+            startActivity(intent)
         }
     }
 
